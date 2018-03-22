@@ -8,6 +8,13 @@
 -- hide the status bar
 display.setStatusBar(display.HiddenStatusBar)
 
+-- load sounds
+local backgroundMusic = audio.loadSound("Sounds/Background Music.mp3")
+local dingSound = audio.loadSound("Sounds/Ding Sound.mp3")
+
+--play sounds
+audio.play(backgroundMusic)
+
 -- local variables
 local backgroundImage = display.newImageRect("Images/background.png", 2048, 1536)
 local yellowGirl = display.newImageRect("Images/yellowGirl.png", 150, 150)
@@ -38,6 +45,7 @@ local function YellowGirlListener(touch)
 	if (touch.phase == "began") then
 		if (alreadyTouchedPurpleGirl == false) then
 			alreadyTouchedYellowGirl = true
+			audio.play(dingSound)
 		end
 	end
 
@@ -64,6 +72,7 @@ local function PurpleGirlListener(touch)
 	if (touch.phase == "began") then
 		if (alreadyTouchedYellowGirl == false) then
 			alreadyTouchedPurpleGirl = true
+			audio.play(dingSound)
 		end
 	end
 
